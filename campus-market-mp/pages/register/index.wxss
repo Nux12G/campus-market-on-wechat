@@ -1,0 +1,237 @@
+.register-page {
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+  background:
+    radial-gradient(circle at top left, rgba(142, 208, 255, 0.28), transparent 32%),
+    linear-gradient(180deg, #f1fbff 0%, #f8fcff 36%, #ffffff 100%);
+}
+
+.register-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 92rpx 32rpx 146rpx;
+  border-bottom-left-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+  background: linear-gradient(165deg, #9ad8ff 0%, #d9f1ff 100%);
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.72);
+  color: #2c6f92;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 2;
+  margin-top: 26rpx;
+  width: 84%;
+  font-size: 46rpx;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #1f5572;
+}
+
+.hero-desc {
+  position: relative;
+  z-index: 2;
+  margin-top: 20rpx;
+  width: 82%;
+  font-size: 25rpx;
+  line-height: 1.8;
+  color: rgba(31, 85, 114, 0.78);
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.hero-blob-lg {
+  top: 56rpx;
+  right: -34rpx;
+  width: 210rpx;
+  height: 210rpx;
+}
+
+.hero-blob-sm {
+  right: 132rpx;
+  top: 224rpx;
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.form-panel {
+  position: relative;
+  z-index: 3;
+  margin: -72rpx 24rpx 0;
+}
+
+.panel-header {
+  padding: 0 8rpx 20rpx;
+}
+
+.panel-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #20465f;
+}
+
+.panel-tip {
+  margin-top: 10rpx;
+  font-size: 23rpx;
+  color: #7693a6;
+}
+
+.form-card {
+  padding: 30rpx 28rpx;
+  border-radius: 30rpx;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18rpx 44rpx rgba(88, 136, 164, 0.12);
+}
+
+.form-item + .form-item {
+  margin-top: 28rpx;
+}
+
+.item-label {
+  font-size: 27rpx;
+  font-weight: 600;
+  color: #254d65;
+}
+
+.required-mark {
+  margin-left: 6rpx;
+  color: #ff8e6b;
+}
+
+.form-input {
+  height: 92rpx;
+  margin-top: 16rpx;
+  padding: 0 26rpx;
+  border-radius: 24rpx;
+  background: #f6fbfe;
+  border: 2rpx solid #d8edf9;
+  color: #7a95a7;
+  font-size: 26rpx;
+  box-sizing: border-box;
+}
+
+.picker-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 92rpx;
+  margin-top: 16rpx;
+  padding: 0 26rpx;
+  border-radius: 24rpx;
+  background: #f6fbfe;
+  border: 2rpx solid #d8edf9;
+  box-sizing: border-box;
+}
+
+.picker-value,
+.picker-arrow {
+  font-size: 26rpx;
+  color: #7a95a7;
+}
+
+.contact-type-group {
+  display: flex;
+  gap: 18rpx;
+  margin-top: 18rpx;
+}
+
+.type-chip {
+  padding: 16rpx 28rpx;
+  border-radius: 999rpx;
+  background: #f4faff;
+  border: 2rpx solid #dbeef9;
+  color: #62839a;
+  font-size: 24rpx;
+}
+
+.active-chip {
+  background: linear-gradient(135deg, #69c4ff 0%, #9cddff 100%);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 10rpx 20rpx rgba(105, 196, 255, 0.2);
+}
+
+.helper-text {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  line-height: 1.7;
+  color: #8aa2b2;
+}
+
+.error-text {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #ff8e6b;
+}
+
+.tips-panel {
+  margin-top: 24rpx;
+  padding: 28rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(180deg, #f6fbff 0%, #ffffff 100%);
+  box-shadow: 0 12rpx 30rpx rgba(110, 150, 174, 0.08);
+}
+
+.tips-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #25516b;
+}
+
+.tips-item {
+  position: relative;
+  margin-top: 16rpx;
+  padding-left: 22rpx;
+  font-size: 23rpx;
+  line-height: 1.7;
+  color: #7794a7;
+}
+
+.tips-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12rpx;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #8ed0ff;
+}
+
+.redirect-banner {
+  margin-top: 24rpx;
+  padding: 18rpx 22rpx;
+  border-radius: 24rpx;
+  background: #eef8ff;
+  color: #2d7093;
+  font-size: 23rpx;
+  line-height: 1.7;
+}
+
+.submit-btn {
+  margin: 28rpx 0 0;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #69c4ff 0%, #9adfff 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  line-height: 94rpx;
+  box-shadow: 0 14rpx 24rpx rgba(105, 196, 255, 0.22);
+}
+
+.submit-btn::after {
+  border: 0;
+}

@@ -1,0 +1,19 @@
+<view class="admin-sub-page">
+  <view class="card">
+    <view class="title">敏感词管理</view>
+    <input class="input" placeholder="新增敏感词（20字以内）" maxlength="20" value="{{word}}" bindinput="handleInput" />
+    <button class="submit-btn" bindtap="handleSubmit">添加敏感词</button>
+  </view>
+
+  <view wx:if="{{loading}}" class="state-card">
+    <view class="state-title">敏感词列表加载中</view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="state-card">
+    <view class="state-title">敏感词列表加载失败</view>
+  </view>
+
+  <view wx:else class="word-list">
+    <view wx:for="{{words}}" wx:key="*this" class="word-chip">{{item}}</view>
+  </view>
+</view>

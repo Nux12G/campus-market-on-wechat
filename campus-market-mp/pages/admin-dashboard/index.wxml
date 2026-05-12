@@ -1,0 +1,39 @@
+<view class="admin-page">
+  <view class="hero-card">
+    <view class="hero-tag">管理中心</view>
+    <view class="hero-title">当前已开放用户封禁、商品下架，并补齐公告、处罚、举报与敏感词入口</view>
+    <view class="hero-desc">后续还可以继续扩展审核日志、图片审核、申诉处理等后台能力。</view>
+  </view>
+
+  <view class="entry-list">
+    <view class="entry-card" bindtap="handleGoUsers">
+      <view class="entry-title">用户管理</view>
+      <view class="entry-desc">封禁/解封账号，并控制该账号商品前台可见性。</view>
+    </view>
+
+    <view class="entry-card" bindtap="handleGoGoods">
+      <view class="entry-title">商品管理</view>
+      <view class="entry-desc">搜索商品、查看状态、执行强制下架。</view>
+    </view>
+
+    <view class="entry-card" bindtap="handleGoAnnouncements">
+      <view class="entry-title">公告管理</view>
+      <view class="entry-desc">发布公告，并同步进入消息中心系统公告。</view>
+    </view>
+
+    <view class="entry-card" bindtap="handleGoPenalties">
+      <view class="entry-title">处罚通知</view>
+      <view class="entry-desc">向指定用户发送处罚通知并在消息中心显示。</view>
+    </view>
+
+    <view class="entry-card" bindtap="handleGoReports">
+      <view class="entry-title">举报处理</view>
+      <view class="entry-desc">查看用户举报并标记处理状态。</view>
+    </view>
+
+    <view class="entry-card" bindtap="handleGoWords">
+      <view class="entry-title">敏感词管理</view>
+      <view class="entry-desc">维护敏感词词库并实时作用于输入校验。</view>
+    </view>
+  </view>
+</view>

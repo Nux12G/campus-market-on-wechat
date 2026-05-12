@@ -1,0 +1,127 @@
+.admin-sub-page {
+  min-height: 100vh;
+  padding: 20rpx 24rpx 40rpx;
+  background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
+  box-sizing: border-box;
+}
+
+.card,
+.state-card,
+.user-card {
+  padding: 28rpx 26rpx;
+  border-radius: 30rpx;
+  background: #ffffff;
+  box-shadow: 0 14rpx 34rpx rgba(96, 139, 162, 0.08);
+}
+
+.title,
+.state-title,
+.user-name {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #254c65;
+}
+
+.sub-text,
+.user-meta {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  line-height: 1.7;
+  color: #7c97a8;
+}
+
+.duration-block {
+  margin-top: 22rpx;
+}
+
+.duration-label {
+  font-size: 22rpx;
+  color: #6f8ea1;
+}
+
+.duration-row {
+  display: flex;
+  gap: 14rpx;
+  margin-top: 14rpx;
+}
+
+.duration-chip {
+  padding: 12rpx 22rpx;
+  border-radius: 999rpx;
+  background: #f5fbfe;
+  border: 2rpx solid #dceef8;
+  color: #6f8ea1;
+  font-size: 22rpx;
+}
+
+.duration-chip-active {
+  background: linear-gradient(135deg, #ffb26b 0%, #ffd08c 100%);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 180rpx;
+  margin-top: 22rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 22rpx;
+  background: #f5fbfe;
+  border: 2rpx solid #dceef8;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #31556b;
+}
+
+.state-card,
+.user-list {
+  margin-top: 18rpx;
+}
+
+.user-list {
+  display: grid;
+  gap: 18rpx;
+}
+
+.user-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12rpx;
+}
+
+.user-status {
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: #eef9ff;
+  color: #2d7093;
+  font-size: 20rpx;
+}
+
+.user-status-banned {
+  background: #ffe9e3;
+  color: #c95e4b;
+}
+
+.action-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18rpx;
+}
+
+.action-btn {
+  padding: 12rpx 22rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.warn-btn {
+  background: #fff6df;
+  color: #9a6a00;
+}
+
+.normal-btn {
+  background: #eef9ff;
+  color: #2d7093;
+}

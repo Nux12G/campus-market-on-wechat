@@ -1,0 +1,47 @@
+<view class="apply-page">
+  <view wx:if="{{loading}}" class="state-card">
+    <view class="state-title">申请页加载中</view>
+    <view class="state-text">正在读取商品与卖家信息。</view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="state-card">
+    <view class="state-title">申请页加载失败</view>
+    <view class="state-text">请返回商品详情后重新尝试。</view>
+    <button class="retry-btn" bindtap="handleRetry">重新加载</button>
+  </view>
+
+  <block wx:elif="{{goodsDetail}}">
+    <view class="hero-card">
+      <view class="hero-tag">联系方式申请</view>
+      <view class="hero-title">向卖家发送一条申请留言，卖家同意后你会收到联系方式</view>
+      <view class="hero-desc">平台不提供聊天，仅传递申请留言与联系方式结果。</view>
+    </view>
+
+    <view class="goods-card">
+      <view class="goods-row">
+        <image class="goods-cover" src="{{goodsDetail.coverImage}}" mode="aspectFill"></image>
+        <view class="goods-info">
+          <view class="goods-campus">{{goodsDetail.campusName}}</view>
+          <view class="goods-title">{{goodsDetail.title}}</view>
+          <view class="goods-seller">卖家：{{goodsDetail.seller.nickname}} · 学号 {{goodsDetail.seller.userNo}}</view>
+          <view class="goods-price-label">预期价格</view>
+          <view class="goods-price">￥{{goodsDetail.expectedPrice}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="message-card">
+      <view class="message-label">申请留言</view>
+      <textarea
+        class="message-textarea"
+        placeholder="例如：我想要这件商品，方便的话请通过申请（最多20字）"
+        maxlength="20"
+        value="{{message}}"
+        bindinput="handleInput"
+      />
+      <view class="message-tip">卖家只能看到你的留言，是否同意后再决定是否交换联系方式。</view>
+    </view>
+
+    <button class="submit-btn" bindtap="handleSubmit">发送申请</button>
+  </block>
+</view>

@@ -1,0 +1,19 @@
+<view class="admin-sub-page">
+  <view class="card">
+    <view class="title">处罚通知</view>
+    <input class="input" data-field="userNo" placeholder="校园编号" maxlength="8" value="{{userNo}}" bindinput="handleInput" />
+    <input class="input" data-field="title" placeholder="处罚标题（20字以内）" maxlength="20" value="{{title}}" bindinput="handleInput" />
+    <textarea class="textarea" data-field="content" placeholder="处罚内容（120字以内）" maxlength="120" value="{{content}}" bindinput="handleInput"></textarea>
+    <button class="submit-btn" bindtap="handleSubmit">发送处罚通知</button>
+  </view>
+  <view wx:if="{{loading}}" class="state-card"><view class="state-title">处罚列表加载中</view></view>
+  <view wx:elif="{{loadFailed}}" class="state-card"><view class="state-title">处罚列表加载失败</view></view>
+  <view wx:else class="penalty-list">
+    <view wx:for="{{penalties}}" wx:key="id" class="penalty-card">
+      <view class="penalty-title">{{item.title}}</view>
+      <view class="penalty-meta">校园编号：{{item.userNo}}</view>
+      <view class="penalty-content">{{item.content}}</view>
+      <view class="penalty-time">{{item.createdAt}}</view>
+    </view>
+  </view>
+</view>

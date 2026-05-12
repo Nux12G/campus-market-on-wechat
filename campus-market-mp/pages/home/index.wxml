@@ -1,0 +1,105 @@
+<view class="home-page">
+  <view class="home-hero">
+    <view class="hero-badge">校园闲置信息交流平台</view>
+    <view class="hero-title">把宿舍角落的闲置，重新流动到真正需要的人手里</view>
+    <view class="hero-desc">
+      首页聚合校园内热度最高的闲置物品，也提供“我的集市”和“集市大厅”双入口，让浏览与发布自然分流。
+    </view>
+
+    <view class="hero-stats">
+      <view class="stat-card">
+        <view class="stat-value">8</view>
+        <view class="stat-label">固定卡位</view>
+      </view>
+      <view class="stat-card">
+        <view class="stat-value">2h</view>
+        <view class="stat-label">刷新一版</view>
+      </view>
+    </view>
+
+    <view class="hero-cloud hero-cloud-lg"></view>
+    <view class="hero-cloud hero-cloud-sm"></view>
+    <view class="hero-wave hero-wave-top"></view>
+    <view class="hero-wave hero-wave-bottom"></view>
+  </view>
+
+  <view class="entry-section">
+    <view class="entry-card primary-entry" bindtap="handleGoMyMarket">
+      <view class="entry-tag">需要登录</view>
+      <view class="entry-title">我的集市</view>
+      <view class="entry-desc">查看我的闲置、管理发布内容、继续编辑商品信息。</view>
+      <view class="entry-link">进入管理中心</view>
+      <view class="entry-shape entry-shape-a"></view>
+    </view>
+
+    <view class="entry-card secondary-entry" bindtap="handleGoMarket">
+      <view class="entry-tag">游客可浏览</view>
+      <view class="entry-title">集市大厅</view>
+      <view class="entry-desc">快速查看校园内全部闲置，搜索、排序和校区筛选都集中在这里。</view>
+      <view class="entry-link">去大厅逛逛</view>
+      <view class="entry-shape entry-shape-b"></view>
+    </view>
+  </view>
+
+  <view class="section-head">
+    <view>
+      <view class="section-title">推荐位</view>
+      <view class="section-subtitle">前四个固定混入 2 个新上架商品；推荐不足时，会用交易与防骗内容补位。</view>
+    </view>
+    <view class="section-badge">TOP 8</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="goods-grid">
+    <view wx:for="{{[1,2,3,4]}}" wx:key="*this" class="goods-card skeleton-card">
+      <view class="skeleton-cover"></view>
+      <view class="skeleton-line skeleton-line-lg"></view>
+      <view class="skeleton-line"></view>
+      <view class="skeleton-line skeleton-line-sm"></view>
+    </view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="status-card">
+    <view class="status-title">首页内容加载失败</view>
+    <view class="status-text">请确认后端服务仍在运行，然后点击下方按钮重新获取首页数据。</view>
+    <button class="status-btn" bindtap="handleRetry">重新加载</button>
+  </view>
+
+  <view wx:else class="goods-grid">
+    <block wx:for="{{homeCards}}" wx:key="id">
+      <view
+        wx:if="{{item.type === 'goods'}}"
+        class="goods-card"
+        data-id="{{item.id}}"
+        bindtap="handleGoodsTap"
+      >
+        <view class="goods-cover-wrap">
+          <image class="goods-cover" src="{{item.coverImage}}" mode="aspectFill"></image>
+          <view class="goods-campus">{{item.campusName}}</view>
+        </view>
+        <view class="goods-content">
+          <view class="goods-topline">
+            <view class="goods-tag {{item.recommendType === 'new' ? 'goods-tag-new' : ''}}">{{item.recommendText}}</view>
+            <view class="goods-views">{{item.viewText}}次浏览</view>
+          </view>
+          <view class="goods-category">{{item.campusTag}}</view>
+          <view class="goods-title">{{item.title}}</view>
+          <view class="goods-meta">{{item.sellerNickname}} · {{item.publishText}}</view>
+          <view class="goods-bottom">
+            <view class="goods-price-wrap">
+              <view class="goods-price-label">预期价格</view>
+              <view class="goods-price">￥{{item.priceText}}</view>
+            </view>
+            <view class="goods-link">查看详情</view>
+          </view>
+        </view>
+      </view>
+
+      <view wx:else class="guide-card" bindtap="handleGuideTap">
+        <view class="guide-tag">{{item.tag}}</view>
+        <view class="guide-title">{{item.title}}</view>
+        <view class="guide-text">{{item.subtitle}}</view>
+        <view class="guide-link">{{item.actionText}}</view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,119 @@
+<view class="market-page">
+  <view class="market-hero">
+    <view class="hero-pill">{{isLoggedIn ? '已登录可搜索' : '游客可浏览'}}</view>
+    <view class="hero-title">集市大厅把校园里的闲置集中陈列，浏览和发现都更直接</view>
+    <view class="hero-desc">
+      这里展示全部上架商品，支持热度排序、最新发布和校区筛选。搜索能力仅对已登录用户开放，避免匿名滥用。
+    </view>
+    <view class="hero-orb hero-orb-lg"></view>
+    <view class="hero-orb hero-orb-sm"></view>
+  </view>
+
+  <view class="search-panel">
+    <view class="search-shell" bindtap="handleSearchAccess">
+      <input
+        class="search-input"
+        placeholder="{{isLoggedIn ? '搜索教材、宿舍好物、数码配件' : '登录后可搜索闲置物品'}}"
+        value="{{inputKeyword}}"
+        bindinput="handleInput"
+        disabled="{{!isLoggedIn}}"
+        confirm-type="search"
+        bindconfirm="handleSearch"
+      />
+      <view class="search-action {{isLoggedIn ? '' : 'search-action-disabled'}}" bindtap="handleSearch">
+        搜索
+      </view>
+    </view>
+
+    <view class="search-meta">
+      <view class="search-status">{{keyword ? ('当前检索：' + keyword) : '当前展示全部商品'}}</view>
+      <view wx:if="{{keyword}}" class="search-clear" bindtap="handleClearSearch">清空</view>
+    </view>
+  </view>
+
+  <view class="filter-panel">
+    <view class="filter-title">按校区筛选</view>
+    <scroll-view class="campus-scroll" scroll-x enable-flex>
+      <view class="campus-row">
+        <block wx:for="{{campusOptions}}" wx:key="*this">
+          <view
+            class="campus-chip {{activeCampus === item ? 'campus-chip-active' : ''}}"
+            data-campus="{{item}}"
+            bindtap="handleCampusChange"
+          >
+            {{item}}
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="sort-row">
+    <block wx:for="{{sortOptions}}" wx:key="value">
+      <view
+        class="sort-chip {{sortBy === item.value ? 'sort-chip-active' : ''}}"
+        data-sort="{{item.value}}"
+        bindtap="handleSortChange"
+      >
+        {{item.label}}
+      </view>
+    </block>
+  </view>
+
+  <view wx:if="{{loading}}" class="market-list">
+    <view wx:for="{{[1,2,3,4]}}" wx:key="*this" class="market-card skeleton-card">
+      <view class="skeleton-cover"></view>
+      <view class="skeleton-right">
+        <view class="skeleton-line skeleton-line-lg"></view>
+        <view class="skeleton-line"></view>
+        <view class="skeleton-line skeleton-line-sm"></view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="status-card">
+    <view class="status-title">大厅商品加载失败</view>
+    <view class="status-text">请确认后端服务仍在运行，或者下拉刷新后重试。</view>
+    <button class="status-btn" bindtap="handleRetry">重新加载</button>
+  </view>
+
+  <view wx:elif="{{!goodsList.length}}" class="status-card">
+    <view class="status-title">{{keyword ? '没有找到相关商品' : '当前还没有上架商品'}}</view>
+    <view class="status-text">
+      {{keyword ? '换个关键词试试，或者清空搜索查看全部商品。' : '后续接真实数据后，这里会展示全部用户上架的校园闲置。'}}
+    </view>
+  </view>
+
+  <view wx:else class="market-list">
+    <view
+      wx:for="{{goodsList}}"
+      wx:key="id"
+      class="market-card"
+      data-id="{{item.id}}"
+      bindtap="handleGoDetail"
+    >
+      <view class="cover-wrap">
+        <image class="market-cover" src="{{item.coverImage}}" mode="aspectFill"></image>
+        <view class="campus-badge">{{item.campusName}}</view>
+      </view>
+      <view class="market-content">
+        <view class="market-topline">
+          <view class="market-tag">{{item.campusTag}}</view>
+          <view class="market-view">{{item.viewText}}次浏览</view>
+        </view>
+        <view class="market-title">{{item.title}}</view>
+        <view class="market-desc">{{item.description}}</view>
+        <view class="market-bottomline">
+          <view class="market-meta">{{item.sellerNickname}} · {{item.publishText}}</view>
+          <view class="market-price-wrap">
+            <view class="market-price-label">预期价格</view>
+            <view class="market-price">￥{{item.priceText}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{goodsList.length && loadingMore}}" class="more-tip">正在加载更多商品...</view>
+  <view wx:elif="{{goodsList.length && !pagination.hasMore}}" class="more-tip muted-tip">已经到底了</view>
+</view>

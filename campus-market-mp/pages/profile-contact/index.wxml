@@ -1,0 +1,20 @@
+<view class="profile-sub-page">
+  <view class="sub-card">
+    <view class="sub-title">修改联系方式</view>
+    <view class="sub-text">选择联系方式类型，并填写更新后的联系方式内容。</view>
+    <picker mode="selector" range="{{contactOptions}}" range-key="label" value="{{contactIndex}}" bindchange="handleTypeChange">
+      <view class="picker-shell">
+        <text class="picker-value">{{contactOptions[contactIndex].label}}</text>
+        <text class="picker-arrow">></text>
+      </view>
+    </picker>
+    <input
+      class="contact-input"
+      placeholder="{{contactOptions[contactIndex].placeholder}}"
+      maxlength="{{contactOptions[contactIndex].maxLength}}"
+      value="{{contactValue}}"
+      bindinput="handleInput"
+    />
+    <button class="save-btn" bindtap="handleSubmit">保存联系方式</button>
+  </view>
+</view>

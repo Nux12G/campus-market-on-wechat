@@ -1,0 +1,81 @@
+.admin-sub-page {
+  min-height: 100vh;
+  padding: 20rpx 24rpx 40rpx;
+  background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
+  box-sizing: border-box;
+}
+
+.card,
+.state-card,
+.announcement-card {
+  padding: 28rpx 26rpx;
+  border-radius: 30rpx;
+  background: #ffffff;
+  box-shadow: 0 14rpx 34rpx rgba(96, 139, 162, 0.08);
+}
+
+.title,
+.state-title,
+.announcement-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #254c65;
+}
+
+.input,
+.textarea {
+  margin-top: 22rpx;
+  border-radius: 22rpx;
+  background: #f5fbfe;
+  border: 2rpx solid #dceef8;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #31556b;
+}
+
+.input {
+  height: 88rpx;
+  padding: 0 24rpx;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 180rpx;
+  padding: 22rpx 24rpx;
+}
+
+.submit-btn {
+  margin-top: 24rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #ffb26b 0%, #ffd08c 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  line-height: 88rpx;
+}
+
+.submit-btn::after {
+  border: 0;
+}
+
+.state-card,
+.announcement-list {
+  margin-top: 18rpx;
+}
+
+.announcement-list {
+  display: grid;
+  gap: 18rpx;
+}
+
+.announcement-content {
+  margin-top: 12rpx;
+  font-size: 23rpx;
+  line-height: 1.8;
+  color: #6f8ea1;
+}
+
+.announcement-time {
+  margin-top: 14rpx;
+  font-size: 20rpx;
+  color: #8ca4b4;
+}

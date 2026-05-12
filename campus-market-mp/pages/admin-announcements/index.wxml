@@ -1,0 +1,24 @@
+<view class="admin-sub-page">
+  <view class="card">
+    <view class="title">公告管理</view>
+    <input class="input" placeholder="公告标题（20字以内）" maxlength="20" value="{{title}}" bindinput="handleTitleInput" />
+    <textarea class="textarea" placeholder="公告内容（120字以内）" maxlength="120" value="{{content}}" bindinput="handleContentInput"></textarea>
+    <button class="submit-btn" bindtap="handleSubmit">发布公告</button>
+  </view>
+
+  <view wx:if="{{loading}}" class="state-card">
+    <view class="state-title">公告列表加载中</view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="state-card">
+    <view class="state-title">公告列表加载失败</view>
+  </view>
+
+  <view wx:else class="announcement-list">
+    <view wx:for="{{announcements}}" wx:key="id" class="announcement-card">
+      <view class="announcement-title">{{item.title}}</view>
+      <view class="announcement-content">{{item.content}}</view>
+      <view class="announcement-time">{{item.createdAt}}</view>
+    </view>
+  </view>
+</view>

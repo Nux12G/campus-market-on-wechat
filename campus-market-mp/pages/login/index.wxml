@@ -1,0 +1,38 @@
+<view class="login-page">
+  <view class="login-hero">
+    <view class="hero-badge">校园集市</view>
+    <view class="hero-title">校园闲置信息互通，线下安心交换</view>
+    <view class="hero-desc">
+      使用微信账号登录后，可发布商品、发起联系方式申请，并管理自己的校园闲置。
+    </view>
+
+    <view class="hero-orbit hero-orbit-lg"></view>
+    <view class="hero-orbit hero-orbit-sm"></view>
+    <view class="hero-wave hero-wave-a"></view>
+    <view class="hero-wave hero-wave-b"></view>
+  </view>
+
+  <view class="login-panel">
+    <view class="panel-title">微信快速登录</view>
+    <view class="panel-text">
+      游客可以浏览大厅，但搜索、发布、我的集市和消息中心需要先完成登录与资料补全。
+    </view>
+
+    <view wx:if="{{redirect}}" class="redirect-tip">
+      登录后将返回你刚才要访问的功能页面
+    </view>
+
+    <button class="login-btn primary-btn" bindtap="handleLogin">
+      微信登录并继续
+    </button>
+    <button class="login-btn ghost-btn" bindtap="handleCancel">
+      取消返回
+    </button>
+
+    <view class="notice-list">
+      <view class="notice-item">首次登录后需补全昵称、性别和联系方式</view>
+      <view class="notice-item">平台不提供聊天，仅处理联系方式申请</view>
+      <view class="notice-item">主色调与交互风格将与首页保持统一</view>
+    </view>
+  </view>
+</view>

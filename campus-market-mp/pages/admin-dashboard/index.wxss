@@ -1,0 +1,58 @@
+.admin-page {
+  min-height: 100vh;
+  padding: 20rpx 24rpx 40rpx;
+  background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
+  box-sizing: border-box;
+}
+
+.hero-card,
+.entry-card {
+  padding: 28rpx 26rpx;
+  border-radius: 30rpx;
+  background: #ffffff;
+  box-shadow: 0 14rpx 34rpx rgba(96, 139, 162, 0.08);
+}
+
+.hero-card {
+  background: linear-gradient(145deg, #fff3d8 0%, #ffffff 100%);
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.82);
+  color: #8b6412;
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+.hero-title {
+  margin-top: 16rpx;
+  font-size: 34rpx;
+  line-height: 1.42;
+  font-weight: 700;
+  color: #6a4a09;
+}
+
+.hero-desc,
+.entry-desc {
+  margin-top: 10rpx;
+  font-size: 20rpx;
+  line-height: 1.7;
+  color: #7c97a8;
+}
+
+.entry-list {
+  display: grid;
+  gap: 18rpx;
+  margin-top: 18rpx;
+}
+
+.entry-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #254c65;
+}

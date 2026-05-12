@@ -1,0 +1,86 @@
+<view class="edit-page">
+  <view wx:if="{{loading}}" class="state-card">
+    <view class="state-title">商品信息加载中</view>
+    <view class="state-text">正在回填你之前发布的商品内容。</view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="state-card">
+    <view class="state-title">编辑商品加载失败</view>
+    <view class="state-text">请确认商品仍存在，然后重新加载。</view>
+    <button class="primary-btn" bindtap="handleRetry">重新加载</button>
+  </view>
+
+  <block wx:else>
+    <view class="edit-hero">
+      <view class="hero-tag">继续完善</view>
+      <view class="hero-title">编辑商品时可调整校区、图片、保质期和简介内容</view>
+      <view class="hero-desc">保存后会回到“我的集市”，并用最新内容覆盖当前商品。</view>
+    </view>
+
+    <view class="form-card">
+      <view class="form-item">
+        <view class="label">商品标题</view>
+        <input class="input" data-field="title" value="{{form.title}}" bindinput="handleInput" placeholder="请输入商品标题（10字以内）" maxlength="10" />
+        <view wx:if="{{errors.title}}" class="error-text">{{errors.title}}</view>
+      </view>
+
+      <view class="form-item">
+        <view class="label">预期价格</view>
+        <input class="input" type="digit" data-field="price" value="{{form.price}}" bindinput="handleInput" placeholder="请输入预期价格" />
+        <view wx:if="{{errors.price}}" class="error-text">{{errors.price}}</view>
+      </view>
+
+      <view class="form-item">
+        <view class="label">校区选择</view>
+        <picker mode="selector" range="{{campusOptions}}" value="{{campusIndex}}" bindchange="handleCampusChange">
+          <view class="picker-shell">
+            <text class="picker-value">{{form.campusName}}</text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item">
+        <view class="label">保质期</view>
+        <picker mode="selector" range="{{shelfLifeOptions}}" value="{{shelfLifeIndex}}" bindchange="handleShelfLifeTypeChange">
+          <view class="picker-shell">
+            <text class="picker-value">{{form.shelfLifeType}}</text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+        <picker wx:if="{{form.shelfLifeType === '指定日期'}}" mode="date" start="{{today}}" value="{{form.shelfLifeDate}}" bindchange="handleShelfLifeDateChange">
+          <view class="picker-shell secondary-picker">
+            <text class="picker-value">{{form.shelfLifeDate || '请选择具体日期'}}</text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+        <view wx:if="{{errors.shelfLifeDate}}" class="error-text">{{errors.shelfLifeDate}}</view>
+      </view>
+
+      <view class="form-item">
+        <view class="label">商品图片</view>
+        <view class="upload-grid">
+          <block wx:for="{{form.images}}" wx:key="*this">
+            <view class="upload-item">
+              <image class="upload-image" src="{{item}}" mode="aspectFill"></image>
+              <view class="delete-badge" data-index="{{index}}" bindtap="handleDeleteImage">×</view>
+            </view>
+          </block>
+          <view wx:if="{{form.images.length < 3}}" class="upload-trigger" bindtap="chooseImages">
+            <view class="upload-plus">+</view>
+            <view class="upload-text">补充图片</view>
+          </view>
+        </view>
+        <view wx:if="{{errors.images}}" class="error-text">{{errors.images}}</view>
+      </view>
+
+      <view class="form-item">
+        <view class="label">文字简介</view>
+        <textarea class="textarea" data-field="description" value="{{form.description}}" bindinput="handleInput" placeholder="请输入商品简介（最多60字）" maxlength="60"></textarea>
+        <view wx:if="{{errors.description}}" class="error-text">{{errors.description}}</view>
+      </view>
+    </view>
+
+    <button class="submit-btn" bindtap="handleSubmit">保存修改</button>
+  </block>
+</view>

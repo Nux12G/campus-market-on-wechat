@@ -1,0 +1,93 @@
+<view class="register-page">
+  <view class="register-hero">
+    <view class="hero-tag">首次登录</view>
+    <view class="hero-title">补全基础资料后，才能发布商品和发起联系方式申请</view>
+    <view class="hero-desc">
+      这一步只需要填写校园集市的必要信息。后续你可以在个人设置中继续调整头像、昵称和联系方式。
+    </view>
+
+    <view class="hero-blob hero-blob-lg"></view>
+    <view class="hero-blob hero-blob-sm"></view>
+  </view>
+
+  <view class="form-panel">
+    <view class="panel-header">
+      <view class="panel-title">基础信息</view>
+      <view class="panel-tip">昵称最多10字，联系方式需填写真实且有效的内容。</view>
+    </view>
+
+    <view class="form-card">
+      <view class="form-item">
+        <view class="item-label">
+          昵称
+          <text class="required-mark">*</text>
+        </view>
+        <input
+          class="form-input"
+          placeholder="请输入昵称（10字以内）"
+          maxlength="10"
+          value="{{form.nickname}}"
+          bindinput="handleNicknameInput"
+        />
+        <view wx:if="{{errors.nickname}}" class="error-text">{{errors.nickname}}</view>
+        <view class="helper-text">昵称将作为你在商品页和申请记录中的展示名称。</view>
+      </view>
+
+      <view class="form-item">
+        <view class="item-label">
+          性别
+          <text class="required-mark">*</text>
+        </view>
+        <picker mode="selector" range="{{genderOptions}}" value="{{genderIndex}}" bindchange="handleGenderChange">
+          <view class="picker-shell">
+            <text class="picker-value">{{form.genderLabel}}</text>
+            <text class="picker-arrow">></text>
+          </view>
+        </picker>
+        <view wx:if="{{errors.gender}}" class="error-text">{{errors.gender}}</view>
+      </view>
+
+      <view class="form-item">
+        <view class="item-label">
+          联系方式类型
+          <text class="required-mark">*</text>
+        </view>
+        <view class="contact-type-group">
+          <block wx:for="{{contactTypes}}" wx:key="value">
+            <view
+              class="type-chip {{activeContactType === item.value ? 'active-chip' : ''}}"
+              data-type="{{item.value}}"
+              data-label="{{item.label}}"
+              bindtap="handleContactTypeSelect"
+            >
+              {{item.label}}
+            </view>
+          </block>
+        </view>
+        <view class="helper-text">三选一即可，后续卖家同意申请后才会展示给买家。</view>
+      </view>
+
+      <view class="form-item">
+        <view class="item-label">
+          联系方式
+          <text class="required-mark">*</text>
+        </view>
+        <input
+          class="form-input"
+          placeholder="{{contactTypes[activeContactType === 'wechat' ? 0 : activeContactType === 'qq' ? 1 : 2].placeholder}}"
+          maxlength="{{contactTypes[activeContactType === 'wechat' ? 0 : activeContactType === 'qq' ? 1 : 2].maxLength}}"
+          value="{{form.contactValue}}"
+          bindinput="handleContactInput"
+        />
+        <view wx:if="{{errors.contactValue}}" class="error-text">{{errors.contactValue}}</view>
+        <view class="helper-text">请填写可正常联系到你的微信号、QQ号或手机号。</view>
+      </view>
+    </view>
+
+    <view wx:if="{{redirect}}" class="redirect-banner">
+      资料补全后将返回你刚才准备访问的功能页面。
+    </view>
+
+    <button class="submit-btn" bindtap="handleSubmit">确认并进入集市</button>
+  </view>
+</view>

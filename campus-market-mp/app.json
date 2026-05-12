@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/market/index",
+    "pages/my-market/index",
+    "pages/messages/index",
+    "pages/profile/index",
+    "pages/login/index",
+    "pages/register/index",
+    "pages/goods-detail/index",
+    "pages/report-submit/index",
+    "pages/user-market/index",
+    "pages/goods-publish/index",
+    "pages/goods-edit/index",
+    "pages/exchange-apply/index",
+    "pages/message-detail/index",
+    "pages/profile-avatar/index",
+    "pages/profile-nickname/index",
+    "pages/profile-contact/index",
+    "pages/admin-dashboard/index",
+    "pages/admin-goods/index",
+    "pages/admin-users/index",
+    "pages/admin-announcements/index",
+    "pages/admin-penalties/index",
+    "pages/admin-reports/index",
+    "pages/admin-words/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "校园集市",
+    "navigationBarBackgroundColor": "#F8FCFF",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F8FCFF",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#A9BFCE",
+    "selectedColor": "#0F6FA8",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/market/index",
+        "text": "集市大厅"
+      },
+      {
+        "pagePath": "pages/my-market/index",
+        "text": "我的集市"
+      },
+      {
+        "pagePath": "pages/messages/index",
+        "text": "消息中心"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "个人设置"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

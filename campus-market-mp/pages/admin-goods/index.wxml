@@ -1,0 +1,31 @@
+<view class="admin-sub-page">
+  <view class="card">
+    <view class="title">商品管理</view>
+    <view class="sub-text">当前展示全部未删除商品，支持管理员强制下架。</view>
+    <input class="search-input" placeholder="搜索商品ID / 标题 / 卖家编号" maxlength="20" value="{{keyword}}" bindinput="handleSearchInput" />
+  </view>
+
+  <view wx:if="{{loading}}" class="state-card">
+    <view class="state-title">商品列表加载中</view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="state-card">
+    <view class="state-title">商品列表加载失败</view>
+  </view>
+
+  <view wx:else class="goods-list">
+    <view wx:for="{{goodsList}}" wx:key="id" class="goods-card">
+      <view class="goods-head">
+        <view class="goods-title">{{item.title}}</view>
+        <view class="goods-status">{{item.status}}</view>
+      </view>
+      <view class="goods-meta">商品ID：{{item.id}} · 卖家编号：{{item.sellerUserNo}}</view>
+      <view class="goods-meta">校区：{{item.campusName}} · 浏览：{{item.viewCount}}</view>
+      <view class="goods-meta">图片审核：{{item.reviewStatus}}</view>
+      <view class="goods-price">预期价格：￥{{item.expectedPrice}}</view>
+      <view wx:if="{{item.status === 'on_sale'}}" class="action-row">
+        <view class="action-btn" data-id="{{item.id}}" bindtap="handleForceOffShelf">强制下架</view>
+      </view>
+    </view>
+  </view>
+</view>

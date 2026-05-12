@@ -1,0 +1,24 @@
+# Node / build
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Env files
+.env
+.env.*
+!.env.example
+!.env.dev.example
+!.env.test.example
+!.env.prod.example
+
+# WeChat private configs
+project.private.config.json
+campus-market-mp/project.private.config.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+

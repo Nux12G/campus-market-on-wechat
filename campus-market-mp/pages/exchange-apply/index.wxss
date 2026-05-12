@@ -1,0 +1,141 @@
+.apply-page {
+  min-height: 100vh;
+  padding: 20rpx 24rpx 40rpx;
+  background:
+    radial-gradient(circle at top right, rgba(142, 208, 255, 0.16), transparent 24%),
+    linear-gradient(180deg, #f4fbff 0%, #f8fcff 42%, #ffffff 100%);
+  box-sizing: border-box;
+}
+
+.hero-card,
+.goods-card,
+.message-card,
+.state-card {
+  padding: 28rpx 26rpx;
+  border-radius: 30rpx;
+  background: #ffffff;
+  box-shadow: 0 14rpx 34rpx rgba(96, 139, 162, 0.08);
+}
+
+.hero-card {
+  background: linear-gradient(145deg, #a5ddff 0%, #e4f6ff 100%);
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.72);
+  color: #2d6f92;
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+.hero-title,
+.state-title {
+  margin-top: 16rpx;
+  font-size: 34rpx;
+  line-height: 1.42;
+  font-weight: 700;
+  color: #1f516d;
+}
+
+.hero-desc,
+.state-text {
+  margin-top: 10rpx;
+  font-size: 20rpx;
+  line-height: 1.7;
+  color: rgba(31, 81, 109, 0.8);
+}
+
+.goods-card,
+.message-card {
+  margin-top: 18rpx;
+}
+
+.goods-row {
+  display: flex;
+  gap: 18rpx;
+}
+
+.goods-cover {
+  width: 190rpx;
+  height: 190rpx;
+  border-radius: 24rpx;
+  background: linear-gradient(135deg, #dff4ff 0%, #f4fbff 100%);
+  flex-shrink: 0;
+}
+
+.goods-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.goods-campus,
+.goods-seller {
+  font-size: 21rpx;
+  color: #7d97a8;
+}
+
+.goods-title {
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  line-height: 1.45;
+  font-weight: 700;
+  color: #264d66;
+}
+
+.goods-price-label {
+  margin-top: 14rpx;
+  font-size: 18rpx;
+  color: #8fa7b7;
+}
+
+.goods-price {
+  margin-top: 4rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1f6488;
+}
+
+.message-label {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #294e66;
+}
+
+.message-textarea {
+  width: 100%;
+  min-height: 200rpx;
+  margin-top: 14rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 24rpx;
+  background: #f5fbfe;
+  border: 2rpx solid #dceef8;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #31556b;
+}
+
+.message-tip {
+  margin-top: 12rpx;
+  font-size: 20rpx;
+  color: #7c97a8;
+}
+
+.submit-btn,
+.retry-btn {
+  margin-top: 24rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #67c4ff 0%, #9cdeff 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  line-height: 88rpx;
+}
+
+.submit-btn::after,
+.retry-btn::after {
+  border: 0;
+}

@@ -1,0 +1,86 @@
+<view class="my-market-page">
+  <view class="my-market-hero">
+    <view class="hero-pill">登录后可管理</view>
+    <view class="hero-title">我的集市是个人闲置管理中心，发布、查看、继续完善都在这里完成</view>
+    <view class="hero-desc">
+      当前先接入商品列表和发布入口。后续会继续补编辑、下架、删除和申请处理能力。
+    </view>
+    <view class="hero-orb hero-orb-lg"></view>
+    <view class="hero-orb hero-orb-sm"></view>
+  </view>
+
+  <view class="summary-grid">
+    <view class="summary-card">
+      <view class="summary-value">{{summary.total}}</view>
+      <view class="summary-label">我的商品</view>
+    </view>
+    <view class="summary-card">
+      <view class="summary-value">{{summary.onSale}}</view>
+      <view class="summary-label">上架中</view>
+    </view>
+    <view class="summary-card">
+      <view class="summary-value">{{summary.totalViews}}</view>
+      <view class="summary-label">累计浏览</view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="market-list">
+    <view wx:for="{{[1,2,3]}}" wx:key="*this" class="market-card skeleton-card">
+      <view class="skeleton-cover"></view>
+      <view class="skeleton-right">
+        <view class="skeleton-line skeleton-line-lg"></view>
+        <view class="skeleton-line"></view>
+        <view class="skeleton-line skeleton-line-sm"></view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="status-card">
+    <view class="status-title">我的商品加载失败</view>
+    <view class="status-text">请确认后端服务仍在运行，或者下拉刷新后重试。</view>
+    <button class="status-btn" bindtap="handleRetry">重新加载</button>
+  </view>
+
+  <view wx:elif="{{!goodsList.length}}" class="empty-card">
+    <view class="empty-title">你还没有发布商品</view>
+    <view class="empty-text">点右下角发布按钮，先把第一件闲置商品放进自己的集市。</view>
+  </view>
+
+  <view wx:else class="market-list">
+    <view
+      wx:for="{{goodsList}}"
+      wx:key="id"
+      class="market-card"
+      data-id="{{item.id}}"
+      bindtap="handleGoodsTap"
+    >
+      <view class="cover-wrap">
+        <image class="market-cover" src="{{item.coverImage}}" mode="aspectFill"></image>
+        <view class="campus-badge">{{item.campusName}}</view>
+      </view>
+      <view class="market-content">
+        <view class="market-topline">
+          <view class="market-tag">{{item.statusText}}</view>
+          <view class="market-meta">{{item.updatedText}}</view>
+        </view>
+        <view class="market-title">{{item.title}}</view>
+        <view class="market-id">商品ID：{{item.id}}</view>
+        <view class="market-desc">{{item.description}}</view>
+        <view class="market-bottomline">
+          <view class="stats-line">{{item.viewText}}次浏览 · {{item.wantText}}人想要</view>
+          <view class="price-wrap">
+            <view class="price-label">预期价格</view>
+            <view class="price-text">￥{{item.priceText}}</view>
+          </view>
+        </view>
+        <view class="action-row">
+          <view class="edit-link" data-id="{{item.id}}" catchtap="handleEdit">编辑商品</view>
+          <view wx:if="{{item.canOffShelf}}" class="action-link warn-link" data-id="{{item.id}}" catchtap="handleOffShelf">下架</view>
+          <view class="action-link danger-link" data-id="{{item.id}}" catchtap="handleDelete">删除</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="publish-btn" bindtap="handlePublish">+</view>
+</view>

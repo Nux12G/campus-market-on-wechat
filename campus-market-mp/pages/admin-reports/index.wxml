@@ -1,0 +1,15 @@
+<view class="admin-sub-page">
+  <view wx:if="{{loading}}" class="state-card"><view class="state-title">举报列表加载中</view></view>
+  <view wx:elif="{{loadFailed}}" class="state-card"><view class="state-title">举报列表加载失败</view></view>
+  <view wx:else class="report-list">
+    <view wx:for="{{reports}}" wx:key="id" class="report-card">
+      <view class="report-title">举报原因：{{item.reason}}</view>
+      <view class="report-meta">商品ID：{{item.goodsId}} · 举报人：{{item.reporterUserNo}}</view>
+      <view class="report-content">{{item.content}}</view>
+      <view class="report-time">{{item.createdAt}}</view>
+      <view wx:if="{{item.status === 'pending'}}" class="action-row">
+        <view class="action-btn" data-id="{{item.id}}" bindtap="handleProcess">标记已处理</view>
+      </view>
+    </view>
+  </view>
+</view>

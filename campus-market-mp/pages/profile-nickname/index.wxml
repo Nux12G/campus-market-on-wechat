@@ -1,0 +1,8 @@
+<view class="profile-sub-page">
+  <view class="sub-card">
+    <view class="sub-title">修改昵称</view>
+    <view class="sub-text">更新你在商品页和申请记录里的展示名称。昵称30天内只能修改一次。</view>
+    <input class="nickname-input" placeholder="请输入新的昵称（10字以内）" maxlength="10" value="{{nickname}}" bindinput="handleInput" />
+    <button class="save-btn" bindtap="handleSubmit">保存昵称</button>
+  </view>
+</view>

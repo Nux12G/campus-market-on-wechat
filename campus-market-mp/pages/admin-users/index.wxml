@@ -1,0 +1,46 @@
+<view class="admin-sub-page">
+  <view class="card">
+    <view class="title">用户封禁管理</view>
+    <view class="sub-text">当前直接从用户列表中执行封禁或解除封禁。</view>
+    <view class="duration-block">
+      <view class="duration-label">默认封禁时长</view>
+      <view class="duration-row">
+        <view
+          wx:for="{{durationOptions}}"
+          wx:key="value"
+          class="duration-chip {{durationIndex === index ? 'duration-chip-active' : ''}}"
+          data-index="{{index}}"
+          bindtap="handleDurationChange"
+        >
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+    <textarea class="textarea" placeholder="填写封禁原因（可选，最多30字）" maxlength="30" value="{{reason}}" bindinput="handleReasonInput"></textarea>
+  </view>
+
+  <view wx:if="{{loading}}" class="state-card">
+    <view class="state-title">用户列表加载中</view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="state-card">
+    <view class="state-title">用户列表加载失败</view>
+  </view>
+
+  <view wx:else class="user-list">
+    <view wx:for="{{users}}" wx:key="userNo" class="user-card">
+      <view class="user-head">
+        <view class="user-name">{{item.nickname}}</view>
+        <view class="user-status {{item.status === 'banned' ? 'user-status-banned' : ''}}">{{item.status}}</view>
+      </view>
+      <view class="user-meta">校园编号：{{item.userNo}}</view>
+      <view class="user-meta">角色：{{item.role === 9 ? '管理员' : '普通用户'}}</view>
+      <view wx:if="{{item.expiresAt}}" class="user-meta">封禁到期：{{item.expiresAt}}</view>
+      <view wx:if="{{item.reason}}" class="user-meta">封禁原因：{{item.reason}}</view>
+      <view class="action-row">
+        <view wx:if="{{item.status !== 'banned'}}" class="action-btn warn-btn" data-userno="{{item.userNo}}" bindtap="handleBan">封禁</view>
+        <view wx:else class="action-btn normal-btn" data-userno="{{item.userNo}}" bindtap="handleUnban">解除封禁</view>
+      </view>
+    </view>
+  </view>
+</view>

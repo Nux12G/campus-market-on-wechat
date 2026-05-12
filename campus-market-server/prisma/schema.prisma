@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum UserStatus {
+  NORMAL
+  DISABLED
+  BANNED
+}
+
+enum Gender {
+  UNKNOWN
+  MALE
+  FEMALE
+}
+
+enum ContactType {
+  WECHAT
+  QQ
+  MOBILE
+}
+
+model User {
+  id                BigInt      @id @default(autoincrement())
+  userNo            BigInt      @unique
+  openid            String      @unique @db.VarChar(64)
+  unionid           String?     @db.VarChar(64)
+  nickname          String      @db.VarChar(30)
+  avatarUrl         String?     @map("avatar_url") @db.VarChar(255)
+  gender            Gender      @default(UNKNOWN)
+  contactType       ContactType @map("contact_type")
+  contactValue      String      @map("contact_value") @db.VarChar(64)
+  role              UserRole    @default(USER)
+  status            UserStatus  @default(NORMAL)
+  isProfileComplete Boolean     @default(false) @map("is_profile_complete")
+  createdAt         DateTime    @default(now()) @map("created_at")
+  updatedAt         DateTime    @updatedAt @map("updated_at")
+  lastLoginAt       DateTime?   @map("last_login_at")
+
+  @@map("users")
+}

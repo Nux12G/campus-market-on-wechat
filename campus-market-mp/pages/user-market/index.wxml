@@ -1,0 +1,55 @@
+<view class="user-market-page">
+  <view class="hero-card">
+    <view class="hero-tag">他的集市</view>
+    <view class="hero-title">{{sellerNickname}} 的在售闲置</view>
+    <view class="hero-desc">后续这里会继续扩展举报入口、信誉等级和交易记录。</view>
+  </view>
+
+  <view class="summary-card">
+    <view class="summary-label">卖家编号</view>
+    <view class="summary-value">{{sellerUserNo}}</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="state-card">
+    <view class="state-title">正在加载卖家商品</view>
+    <view class="state-text">稍后会展示这个卖家当前还在售的闲置物品。</view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="state-card">
+    <view class="state-title">他的集市加载失败</view>
+    <view class="state-text">请稍后重试。</view>
+    <button class="retry-btn" bindtap="handleRetry">重新加载</button>
+  </view>
+
+  <view wx:elif="{{!goodsList.length}}" class="state-card">
+    <view class="state-title">这个卖家暂时没有在售商品</view>
+    <view class="state-text">后续如果他重新发布商品，这里会同步显示。</view>
+  </view>
+
+  <view wx:else class="goods-list">
+    <view
+      wx:for="{{goodsList}}"
+      wx:key="id"
+      class="goods-card"
+      data-id="{{item.id}}"
+      bindtap="handleGoodsTap"
+    >
+      <view class="cover-wrap">
+        <image class="goods-cover" src="{{item.coverImage}}" mode="aspectFill"></image>
+        <view class="campus-badge">{{item.campusName}}</view>
+      </view>
+      <view class="goods-content">
+        <view class="goods-topline">
+          <view class="goods-tag">{{item.campusTag}}</view>
+          <view class="goods-view">{{item.viewText}}次浏览</view>
+        </view>
+        <view class="goods-title">{{item.title}}</view>
+        <view class="goods-desc">{{item.description}}</view>
+        <view class="goods-bottom">
+          <view class="price-label">预期价格</view>
+          <view class="price-text">￥{{item.priceText}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

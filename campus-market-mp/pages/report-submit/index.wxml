@@ -1,0 +1,9 @@
+<view class="admin-sub-page">
+  <view class="card">
+    <view class="title">举报商品</view>
+    <view class="sub-text">商品ID：{{goodsId}}</view>
+    <input class="input" data-field="reason" placeholder="举报原因（20字以内）" maxlength="20" value="{{reason}}" bindinput="handleInput" />
+    <textarea class="textarea" data-field="content" placeholder="补充说明（80字以内）" maxlength="80" value="{{content}}" bindinput="handleInput"></textarea>
+    <button class="submit-btn" bindtap="handleSubmit">提交举报</button>
+  </view>
+</view>

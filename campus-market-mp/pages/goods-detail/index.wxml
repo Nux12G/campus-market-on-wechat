@@ -1,0 +1,94 @@
+<view class="detail-page">
+  <view wx:if="{{loading}}" class="detail-loading">
+    <view class="detail-card skeleton-banner"></view>
+    <view class="detail-card skeleton-block skeleton-block-lg"></view>
+    <view class="detail-card skeleton-block"></view>
+  </view>
+
+  <view wx:elif="{{loadFailed}}" class="status-card">
+    <view class="status-title">商品详情加载失败</view>
+    <view class="status-text">请确认后端服务仍在运行，或者下拉刷新后重试。</view>
+    <button class="status-btn" bindtap="handleRetry">重新加载</button>
+  </view>
+
+  <block wx:elif="{{goodsDetail}}">
+    <swiper class="detail-swiper" indicator-dots circular autoplay>
+      <block wx:for="{{goodsDetail.imageList}}" wx:key="*this">
+        <swiper-item>
+          <image class="detail-image" src="{{item}}" mode="aspectFill"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="detail-main">
+      <view class="price-row">
+        <view class="price-wrap">
+          <view class="price-label">预期价格</view>
+          <view class="price-text">￥{{goodsDetail.priceText}}</view>
+        </view>
+        <view class="chip-group">
+          <view class="tag-chip">{{goodsDetail.campusTag}}</view>
+          <view class="tag-chip campus-chip">{{goodsDetail.campusName}}</view>
+        </view>
+      </view>
+
+      <view class="title-text">{{goodsDetail.title}}</view>
+      <view class="meta-text">
+        {{goodsDetail.seller.nickname}} · 学号 {{goodsDetail.seller.userNo}} · {{goodsDetail.publishText}}
+      </view>
+      <view class="goods-id">商品ID：{{goodsDetail.id}}</view>
+
+      <view class="metric-row">
+        <view class="metric-card">
+          <view class="metric-value">{{goodsDetail.viewText}}</view>
+          <view class="metric-label">当前浏览</view>
+        </view>
+        <view class="metric-card">
+          <view class="metric-value">{{goodsDetail.shelfLifeText}}</view>
+          <view class="metric-label">保质期</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="detail-section">
+      <view class="section-title">商品简介</view>
+      <view class="section-text">{{goodsDetail.description}}</view>
+    </view>
+
+    <view class="detail-section">
+      <view class="section-title">卖家信息</view>
+      <view class="seller-card">
+        <view class="seller-top">
+          <view class="seller-avatar">
+            <image
+              wx:if="{{goodsDetail.seller.avatarUrl}}"
+              class="seller-avatar-image"
+              src="{{goodsDetail.seller.avatarUrl}}"
+              mode="aspectFill"
+            ></image>
+            <view wx:else class="seller-avatar-fallback">{{goodsDetail.seller.nickname.slice(0, 1)}}</view>
+          </view>
+          <view class="seller-main">
+            <view class="seller-badge">卖家</view>
+            <view class="seller-name">{{goodsDetail.seller.nickname}}</view>
+            <view class="seller-id">校园编号：{{goodsDetail.seller.userNo}}</view>
+          </view>
+        </view>
+        <view class="seller-tip">当前阶段仅展示基础信息，联系方式需通过“我想要”申请后才能获取。</view>
+        <view class="seller-actions">
+          <view class="seller-link" bindtap="handleViewSellerMarket">他的集市</view>
+          <view wx:if="{{!isOwner}}" class="seller-link report-link" bindtap="handleReport">举报商品</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-bar">
+      <view class="action-note">
+        {{isOwner ? '这是你自己发布的商品，当前不可发起交换申请' : '如对该商品感兴趣，可发起联系方式申请'}}
+      </view>
+      <button class="want-btn {{isOwner ? 'want-btn-disabled' : ''}}" bindtap="handleWant">
+        {{isOwner ? '我的商品' : '我想要'}}
+      </button>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,14 @@
+:root {
+  --brand-primary: #8ed0ff;
+  --brand-primary-deep: #2d6a8e;
+  --brand-primary-soft: #eaf8ff;
+  --page-bg: #f8fcff;
+  --surface: #ffffff;
+  --text-primary: #20465f;
+  --text-secondary: #6e8ca0;
+  --text-tertiary: #9cb4c5;
+  --accent-warning: #ffd76a;
+  --accent-danger: #ff8e6b;
+  --radius-lg: 32rpx;
+  --radius-md: 24rpx;
+}

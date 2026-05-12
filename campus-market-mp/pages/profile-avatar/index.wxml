@@ -1,0 +1,22 @@
+<view class="profile-sub-page">
+  <view class="sub-card">
+    <view class="sub-title">修改头像</view>
+    <view class="sub-text">从系统提供的头像中选择一个使用。头像30天内只能修改一次。</view>
+    <view class="avatar-preview">
+      <image wx:if="{{avatarUrl}}" class="avatar-image" src="{{avatarUrl}}" mode="aspectFill"></image>
+      <view wx:else class="avatar-placeholder">请选择头像</view>
+    </view>
+    <view class="avatar-grid">
+      <view
+        wx:for="{{avatarOptions}}"
+        wx:key="*this"
+        class="avatar-option {{avatarUrl === item ? 'avatar-option-active' : ''}}"
+        data-url="{{item}}"
+        bindtap="chooseAvatar"
+      >
+        <image class="avatar-option-image" src="{{item}}" mode="aspectFill"></image>
+      </view>
+    </view>
+    <button class="save-btn" bindtap="handleSubmit">保存头像</button>
+  </view>
+</view>

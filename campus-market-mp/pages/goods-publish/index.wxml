@@ -1,0 +1,131 @@
+<view class="publish-page">
+  <view class="publish-hero">
+    <view class="hero-tag">发布新商品</view>
+    <view class="hero-title">发布时补充校区、图片与保质期，能让线下交换信息更完整</view>
+    <view class="hero-desc">
+      当前先把发布页前端能力补齐，包括校区选择、图片上传、保质期和预览同步，后续再接真实发布接口。
+    </view>
+  </view>
+
+  <view class="form-card">
+    <view class="form-item">
+      <view class="label">商品标题</view>
+      <input
+        class="input"
+        placeholder="例如：九成新台灯（10字以内）"
+        maxlength="10"
+        data-field="title"
+        value="{{form.title}}"
+        bindinput="handleInput"
+      />
+      <view wx:if="{{errors.title}}" class="error-text">{{errors.title}}</view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">预期价格</view>
+      <input
+        class="input"
+        placeholder="请输入预期价格"
+        type="digit"
+        data-field="price"
+        value="{{form.price}}"
+        bindinput="handleInput"
+      />
+      <view wx:if="{{errors.price}}" class="error-text">{{errors.price}}</view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">校区选择</view>
+      <picker mode="selector" range="{{campusOptions}}" value="{{campusIndex}}" bindchange="handleCampusChange">
+        <view class="picker-shell">
+          <text class="picker-value">{{form.campusName}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+      <view wx:if="{{errors.campusName}}" class="error-text">{{errors.campusName}}</view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">保质期</view>
+      <picker mode="selector" range="{{shelfLifeOptions}}" value="{{shelfLifeIndex}}" bindchange="handleShelfLifeTypeChange">
+        <view class="picker-shell">
+          <text class="picker-value">{{form.shelfLifeType}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+      <picker
+        wx:if="{{form.shelfLifeType === '指定日期'}}"
+        mode="date"
+        start="{{today}}"
+        value="{{form.shelfLifeDate}}"
+        bindchange="handleShelfLifeDateChange"
+      >
+        <view class="picker-shell secondary-picker">
+          <text class="picker-value">{{form.shelfLifeDate || '请选择具体日期'}}</text>
+          <text class="picker-arrow">></text>
+        </view>
+      </picker>
+      <view wx:if="{{errors.shelfLifeDate}}" class="error-text">{{errors.shelfLifeDate}}</view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">商品图片</view>
+      <view class="upload-grid">
+        <block wx:for="{{form.images}}" wx:key="*this">
+          <view class="upload-item">
+            <image class="upload-image" src="{{item}}" mode="aspectFill"></image>
+            <view class="delete-badge" data-index="{{index}}" bindtap="handleDeleteImage">×</view>
+          </view>
+        </block>
+        <view wx:if="{{form.images.length < 3}}" class="upload-trigger" bindtap="chooseImages">
+          <view class="upload-plus">+</view>
+          <view class="upload-text">上传图片</view>
+        </view>
+      </view>
+      <view class="helper-text">最多上传 3 张，预览首图会作为商品卡片封面</view>
+      <view wx:if="{{errors.images}}" class="error-text">{{errors.images}}</view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">文字简介</view>
+      <textarea
+        class="textarea"
+        placeholder="简单描述商品成色、用途、是否带配件等（最多60字）"
+        maxlength="60"
+        data-field="description"
+        value="{{form.description}}"
+        bindinput="handleInput"
+      />
+      <view wx:if="{{errors.description}}" class="error-text">{{errors.description}}</view>
+    </view>
+  </view>
+
+  <view class="preview-card">
+    <view class="preview-head">
+      <view class="preview-title">卡片预览</view>
+      <view class="preview-note">商品预览图左上角会显示校区</view>
+    </view>
+
+    <view class="preview-item">
+      <view class="preview-image-wrap">
+        <view class="preview-campus">{{form.campusName}}</view>
+        <image
+          wx:if="{{form.images.length}}"
+          class="preview-image-real"
+          src="{{form.images[0]}}"
+          mode="aspectFill"
+        ></image>
+        <view wx:else class="preview-image">图片上传后显示在这里</view>
+      </view>
+      <view class="preview-content">
+        <view class="preview-name">{{form.title || '未填写商品标题'}}</view>
+        <view class="preview-desc">{{form.description || '这里会展示你输入的简介内容。'}}</view>
+        <view class="preview-meta">{{form.shelfLifeType === '指定日期' ? ('保质期至 ' + form.shelfLifeDate) : '保质期：无'}}</view>
+        <view class="preview-price-label">预期价格</view>
+        <view class="preview-price">￥{{form.price || '--'}}</view>
+      </view>
+    </view>
+  </view>
+
+  <button class="submit-btn" bindtap="handleSubmit">保存并继续</button>
+</view>

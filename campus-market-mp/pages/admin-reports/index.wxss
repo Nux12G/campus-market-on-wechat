@@ -1,0 +1,8 @@
+.admin-sub-page{min-height:100vh;padding:20rpx 24rpx 40rpx;background:linear-gradient(180deg,#f4fbff 0%,#ffffff 100%);box-sizing:border-box;}
+.state-card,.report-card{padding:28rpx 26rpx;border-radius:30rpx;background:#fff;box-shadow:0 14rpx 34rpx rgba(96,139,162,.08);}
+.state-card,.report-list{margin-top:18rpx;}
+.report-list{display:grid;gap:18rpx;}
+.state-title,.report-title{font-size:30rpx;font-weight:700;color:#254c65;}
+.report-meta,.report-content,.report-time{margin-top:10rpx;font-size:22rpx;line-height:1.7;color:#7c97a8;}
+.action-row{display:flex;justify-content:flex-end;margin-top:18rpx;}
+.action-btn{padding:12rpx 22rpx;border-radius:999rpx;background:#eef9ff;color:#2d7093;font-size:22rpx;font-weight:600;}

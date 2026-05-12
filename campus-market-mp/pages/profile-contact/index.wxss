@@ -1,0 +1,64 @@
+.profile-sub-page {
+  min-height: 100vh;
+  padding: 20rpx 24rpx 40rpx;
+  background: linear-gradient(180deg, #f4fbff 0%, #ffffff 100%);
+  box-sizing: border-box;
+}
+
+.sub-card {
+  padding: 28rpx 26rpx;
+  border-radius: 30rpx;
+  background: #ffffff;
+  box-shadow: 0 14rpx 34rpx rgba(96, 139, 162, 0.08);
+}
+
+.sub-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #254c65;
+}
+
+.sub-text {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  line-height: 1.8;
+  color: #7c97a8;
+}
+
+.picker-shell,
+.contact-input {
+  height: 88rpx;
+  margin-top: 24rpx;
+  padding: 0 24rpx;
+  border-radius: 22rpx;
+  background: #f5fbfe;
+  border: 2rpx solid #dceef8;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #31556b;
+}
+
+.picker-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.picker-value,
+.picker-arrow {
+  font-size: 24rpx;
+  color: #6f8ea1;
+}
+
+.save-btn {
+  margin-top: 28rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #67c4ff 0%, #9cdeff 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  line-height: 88rpx;
+}
+
+.save-btn::after {
+  border: 0;
+}
