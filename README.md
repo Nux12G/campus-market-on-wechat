@@ -75,6 +75,9 @@
 
 ### 1️⃣ 前置要求
 
+非常重要！！！你需要阅读：README_UPLOAD.txt（在项目中）
+里面包含了所有要预先配置的数值和环境
+
 确保本地已安装以下工具：
 
 - [Node.js](https://nodejs.org/)（v16 或以上）
@@ -92,6 +95,7 @@ cd miniprogram-beta
 
 1. 创建 MySQL 数据库（例如 `campus_market`）
 2. 修改后端项目中的 `.env` 文件：
+   
 
 ```env
 DATABASE_URL="mysql://用户名:密码@localhost:3306/campus_market"
